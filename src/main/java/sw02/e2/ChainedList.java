@@ -3,18 +3,39 @@ package sw02.e2;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+/**
+ * The ChainedList class represents a singly linked list that stores ListElement objects.
+ * It allows adding, removing, and searching elements in the list.
+ */
 public class ChainedList {
 
+    /**
+     * Represents the head (first element) of the linked list.
+     */
     private ListElement head;
+
+    /**
+     * Keeps track of the number of elements in the linked list.
+     */
     private int sizeCounter;
+
+    /**
+     * Logger for logging debug information.
+     */
     private static final Logger Log = LogManager.getLogger();
 
+    /**
+     * Adds a new element with the given data to the end of the linked list.
+     *
+     * @param data The data to be stored in the new element.
+     */
     public void newElement(final String data) {
 
-        // if head is null, set head with new element
+        // If head is null, set head with a new element
         if(this.head == null) {
             this.head = new ListElement(data);
         } else {
+            // Find the last element and add the new element after it
             ListElement element = this.head;
             while(element.getNextElement() != null) {
                 element = element.getNextElement();
@@ -23,11 +44,17 @@ public class ChainedList {
         }
     }
 
+    /**
+     * Returns the number of elements in the linked list.
+     *
+     * @return The size of the linked list.
+     */
     public int getListSize() {
         sizeCounter = 0;
         ListElement elemenet = this.head;
 
         if(elemenet != null) {
+            // Count the number of elements in the list
             sizeCounter++;
         }
         while(elemenet.getNextElement() != null) {
@@ -37,16 +64,32 @@ public class ChainedList {
         return sizeCounter;
     }
 
+    /**
+     * Adds a new element with the given data to the beginning of the linked list.
+     *
+     * @param data The data to be stored in the new element.
+     */
     public void newFirstElement(final String data) {
         ListElement oldHead = this.head;
         this.head = new ListElement(data);
         this.head.setNextElement(oldHead);
     }
 
+    /**
+     * Returns the head (first element) of the linked list.
+     *
+     * @return The head element of the linked list.
+     */
     public ListElement getHead() {
         return this.head;
     }
 
+    /**
+     * Searches for a given ListElement in the linked list.
+     *
+     * @param listElement The element to search for.
+     * @return true if the element is found, false otherwise.
+     */
     public boolean searchElement(final ListElement listElement) {
         ListElement element = this.head;
         for(int i = 0; i < this.getListSize(); i++) {
@@ -58,6 +101,11 @@ public class ChainedList {
         return false;
     }
 
+    /**
+     * Removes and returns the first element from the linked list.
+     *
+     * @return The removed first element.
+     */
     public ListElement getAndRemoveFirstElement() {
         ListElement newHead = this.head.getNextElement();
         ListElement oldHead = this.head;
@@ -65,22 +113,29 @@ public class ChainedList {
         return oldHead;
     }
 
+    /**
+     * Removes and returns a specified element from the linked list.
+     *
+     * @param listElement The element to be removed.
+     * @return The removed element, or an empty element if the specified element is not found.
+     */
     public ListElement getAndRemoveAnyElement(final ListElement listElement) {
-        // check if element exists
+        // Check if the element exists in the list
         if(searchElement(listElement) == true) {
 
-            // if first element
+            // If the element is the first element
             if(this.head.equals(listElement)) {
                 Log.debug("getAndRemoveAnyElement First");
                 return this.getAndRemoveFirstElement();
             }
 
-            // get the element before the element searched
+            // Find the element before the element to be removed
             ListElement element = this.head;
             while(!element.getNextElement().equals(listElement)) {
                 element = element.getNextElement();
             }
-            // if in the middle
+
+            // If the element is in the middle of the list
             if(element.getNextElement().equals(listElement) && element.getNextElement().getNextElement() != null) {
                 Log.debug("getAndRemoveAnyElement Middle");
                 ListElement followingElement = element.getNextElement().getNextElement();
@@ -89,7 +144,7 @@ public class ChainedList {
                 return returnElement;
             }
 
-            // if at the end
+            // If the element is at the end of the list
             if(element.getNextElement().equals(listElement)) {
                 Log.debug("getAndRemoveAnyElement End");
                 ListElement returnElement = element.getNextElement();
