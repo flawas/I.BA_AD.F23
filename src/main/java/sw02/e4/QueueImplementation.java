@@ -72,8 +72,47 @@ public class QueueImplementation implements QueueInterface {
      */
     @Override
     public QueueElement dequeue() {
-        QueueElement returnElement = queueStorage.remove(head);
-        tail--;
-        return returnElement;
+        if(!queueStorage.isEmpty()) {
+            QueueElement returnElement = queueStorage.remove(head);
+            tail--;
+            return returnElement;
+        }
+        return new QueueElement('0');
     }
+
+    /**
+     * Retrieves the elements of the queue storage as a comma-separated string.
+     * If the queue is not empty, it iterates through the elements in the queue and constructs a string
+     * containing the data of each element, separated by commas.
+     *
+     * @return A string representation of the queue storage elements, separated by commas, or an empty string if the queue is empty.
+     */
+    public String getQueueStorageElements() {
+        String returnString = "";
+        if (!queueStorage.isEmpty()) {
+            for (int i = 0; i < getQueueSize(); i++) {
+                if (i == 0) {
+                    returnString += queueStorage.get(i).getData();
+                } else {
+                    returnString += "," + queueStorage.get(i).getData();
+                }
+            }
+            return returnString;
+        }
+        return "";
+    }
+
+    /**
+     * Returns a string representation of the QueueImplementation object.
+     * The string includes the queue storage elements in a formatted manner.
+     *
+     * @return A string representation of the QueueImplementation object, including the queue storage elements.
+     */
+    @Override
+    public String toString() {
+        return "QueueImplementation{" +
+                "queueStorage=" + getQueueStorageElements() +
+                '}';
+    }
+
 }
