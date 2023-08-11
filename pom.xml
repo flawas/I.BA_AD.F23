@@ -918,7 +918,7 @@
         <site>
             <id>oop_maven_template</id>
             <name>oop_maven_template</name>
-            <url>https://jenkins-global.el.eee.intern/jenkins/job/oop_maven_template-develop/site/</url>
+            <url>http://windoof.does-it.net:8080/job/AD/site/</url>
         </site>
     </distributionManagement>
 </project>
