@@ -69,6 +69,6 @@ class TreeTest {
         tree.addTreeNode(new TreeNode('K'));
         tree.addTreeNode(new TreeNode('M'));
         tree.addTreeNode(new TreeNode('O'));
-        assertEquals("jgh", tree.getTree());
+        assertEquals(",H,D,B", tree.getTree());
     }
 }

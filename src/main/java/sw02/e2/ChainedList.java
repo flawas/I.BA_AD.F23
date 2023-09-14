@@ -51,15 +51,15 @@ public class ChainedList {
      */
     public int getListSize() {
         sizeCounter = 0;
-        ListElement elemenet = this.head;
+        ListElement element = this.head;
 
-        if(elemenet != null) {
+        if(element != null) {
             // Count the number of elements in the list
             sizeCounter++;
         }
-        while(elemenet.getNextElement() != null) {
+        while(element.getNextElement() != null) {
             sizeCounter++;
-            elemenet = elemenet.getNextElement();
+            element = element.getNextElement();
         }
         return sizeCounter;
     }

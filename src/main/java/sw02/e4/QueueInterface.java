@@ -12,7 +12,7 @@ public interface QueueInterface {
      *
      * @param queueElement The QueueElement to be added to the queue.
      */
-    public void enqueue(QueueElement queueElement);
+    public boolean enqueue(QueueElement queueElement);
 
     /**
      * Removes and returns the element from the front of the queue.

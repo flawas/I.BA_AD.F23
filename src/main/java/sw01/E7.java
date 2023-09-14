@@ -111,6 +111,7 @@ public class E7 {
 
         E7 e7 = new E7();
         Log.info("Aufgabe b");
+        e7.getSymmetricCount(2);
         Log.info("1-stellige symmetrische Zahlen: " + e7.getSymmetricCount(1));
         Log.info("2-stellige symmetrische Zahlen: " + e7.getSymmetricCount(2));
         Log.info("3-stellige symmetrische Zahlen: " + e7.getSymmetricCount(3));

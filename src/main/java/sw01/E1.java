@@ -34,9 +34,11 @@ public class E1 {
     public static int ggtIterativ1(int a, int b) {
         while (a != b) {
             if (a > b) {
+                Log.debug(a-b);
                 a = a - b;
                 counterA++;
             } else {
+                Log.debug(b - a);
                 b = b - a;
                 counterB++;
             }
@@ -54,9 +56,11 @@ public class E1 {
     public static int ggtIterarativ2(int a, int b) {
         while ((a != 0) && (b != 0)) {
             if (a > b) {
+                Log.debug(a % b);
                 a = a % b;
                 counterA++;
             } else {
+                Log.debug(b % a);
                 b = b % a;
                 counterB++;
             }
@@ -77,10 +81,9 @@ public class E1 {
             return ggtRekursiv(a - b, b);
         } else {
             if (a < b) {
-                counterA++;
+                counterB++;
                 return ggtRekursiv(a, b - a);
             } else {
-                counterB++;
                 return b;
             }
         }

@@ -154,6 +154,6 @@ public class E3 {
         Log.info("Aufgabe d, alle Angaben in Sekunden");
         Log.info("Rechenzeit O(1): " + rechenzeit(0.1, 10000, 100000, "O(1)"));
         Log.info("Rechenzeit O(n^2): " + rechenzeit(0.1, 10000, 100000, "O(n^2)"));
-        Log.info("Rechenzeit O(n * log(n): " + rechenzeit(0.1, 10000, 100000, "O(n*log(n)"));
+        Log.info("Rechenzeit O(n * log(n): " + rechenzeit(0.1, 10000, 100000, "O(n*log(n))"));
     }
 }

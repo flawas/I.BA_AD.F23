@@ -74,4 +74,16 @@ class QueueImplementationTest {
         queueImplementation.enqueue(new QueueElement('E'));
         assertEquals("QueueImplementation{queueStorage=A,B,C,D,E}", queueImplementation.toString());
     }
+
+    @Test
+    void testFull() {
+        QueueImplementation queueImplementation = new QueueImplementation();
+        assertTrue(queueImplementation.enqueue(new QueueElement('A')));
+        assertTrue(queueImplementation.enqueue(new QueueElement('B')));
+        assertTrue(queueImplementation.enqueue(new QueueElement('C')));
+        assertTrue(queueImplementation.enqueue(new QueueElement('D')));
+        assertTrue(queueImplementation.enqueue(new QueueElement('E')));
+        assertFalse(queueImplementation.enqueue(new QueueElement('F')));
+        assertFalse(queueImplementation.enqueue(new QueueElement('G')));
+    }
 }

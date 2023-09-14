@@ -58,11 +58,13 @@ public class QueueImplementation implements QueueInterface {
      * @param queueElement The QueueElement to be added to the queue.
      */
     @Override
-    public void enqueue(QueueElement queueElement) {
-        queueStorage.add(tail, queueElement);
+    public boolean enqueue(QueueElement queueElement) {
         if (tail < QUEUESTORAGE_CAPACITY) {
+            queueStorage.add(tail, queueElement);
             tail++;
+            return true;
         }
+        return false;
     }
 
     /**
